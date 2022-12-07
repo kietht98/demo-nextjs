@@ -1,8 +1,14 @@
 import Head from "next/head";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
+  const [allowVideo, setAllowVideo] = useState(false);
+  useEffect(() => {
+    setAllowVideo(true);
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -18,23 +24,26 @@ export default function Home() {
           gridTemplateColumns: "repeat(2,1fr)",
         }}
       >
-        {[1, 2, 3, 4, 5, 6].map((value) => (
-          <div key={`item-index${value}`}>
-            <div>Video ${value}</div>
-            <video
-              id='video'
-              muted
-              preload='metadata'
-              style={{
-                width: "40vw",
-                margin: "auto",
-                height: "50vh",
-              }}
-            >
-              <source src='/video.webm' type='video/mp4' />
-            </video>
-          </div>
-        ))}
+        {allowVideo &&
+          [1, 2, 3, 4, 5, 6].map((value) => (
+            <div key={`item-index${value}`}>
+              <div>Video ${value}</div>
+              <video
+                id='video'
+                muted
+                preload='metadata'
+                autoPlay={true}
+                loop={true}
+                style={{
+                  width: "40vw",
+                  margin: "auto",
+                  height: "50vh",
+                }}
+              >
+                <source src='/video.webm' type='video/mp4' />
+              </video>
+            </div>
+          ))}
       </main>
 
       <footer className={styles.footer}>
