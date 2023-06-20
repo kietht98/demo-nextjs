@@ -6,7 +6,7 @@ const About = () => {
   form.append("email", "htktuan9898@gmail.com");
   form.append("Phone", "0339393939");
   form.append("CareerJob", "FE");
-  form.append("boolean", true);
+  form.append("boolean", "true");
   form.append("list", "gxYCmQpoSAfogqMTDAFmkw");
   form.append("subform", "yes");
   form.append("Document", "FE");
